@@ -19,19 +19,28 @@ expects.
 
 ## Install
 
+No PyPI release yet, so install directly from the tagged GitHub archive:
+
 ```bash
-pip install sign-pbo
+pip install https://github.com/bearmeister/sign-pbo/archive/refs/tags/v1.1.1.zip
 ```
 
-Or from source:
+Works on any environment with `pip` and Python 3.10+; no `git` binary
+required. Pulls in `cryptography` automatically.
+
+If you already have `git` installed:
+
+```bash
+pip install git+https://github.com/bearmeister/sign-pbo@v1.1.1
+```
+
+Or from a local clone:
 
 ```bash
 git clone https://github.com/bearmeister/sign-pbo
 cd sign-pbo
 pip install -e .
 ```
-
-Requires Python 3.10+ and the `cryptography` package (for key generation).
 
 ## Usage
 

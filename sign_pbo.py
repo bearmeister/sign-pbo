@@ -1,22 +1,11 @@
-# Author:       Bushy <contact@bushy.dev>
-# Version:      v1.1.1
-# Modified:     2026-05-14
+# Author:   Bushy <contact@bushy.dev>
+# Version:  v1.1.1
+# Modified: 2026-05-14
 #
-# sign_pbo.py: sign a hemtt-built PBO with a stable authority name,
-# bypassing hemtt's version-appended authority naming.
-#
-# Algorithm derived from hemtt/libs/signing source (BrettMayson/HEMTT, GPLv2).
+# sign_pbo.py: sign a hemtt-built PBO with a stable authority name.
+# Algorithm derived from hemtt/libs/signing (BrettMayson/HEMTT, GPLv2).
 # Bikey/bisign format: RSA 1024-bit, little-endian integers, PKCS#1v1.5 SHA-1.
-#
-# Usage:
-#   python scripts/sign_pbo.py <pbo_path> <authority> [--key-dir <dir>]
-#
-# Generates / reuses <authority>.bikey and <authority>.privatekey in key-dir
-# (default: .signing/).  Writes <pbo>.{authority}.bisign alongside the PBO.
-#
-# Accepted key formats in key-dir:
-#   <authority>.privatekey   this script's own compact format (n/e/d only)
-#   <authority>.biprivatekey  RSA2 CRT format (DS utils / DayZ Tools)
+# Upstream: https://github.com/bearmeister/sign-pbo
 
 from __future__ import annotations
 
@@ -59,8 +48,8 @@ def _load_or_generate_key(key_path: Path) -> tuple[int, int, int, int]:
 
     Accepts three key sources (checked in order):
     1. <key_path> with .biprivatekey suffix: RSA2 CRT format (DS utils)
-    2. <key_path> with .privatekey suffix:   this script's own compact format
-    3. Neither exists:                       generate a new key and save as .privatekey
+    2. <key_path> with .privatekey suffix: this script's own compact format
+    3. Neither exists: generate a new key and save as .privatekey
 
     The caller should pass the .privatekey path; for .biprivatekey pass that path directly.
     """
@@ -252,7 +241,7 @@ def hash_filenames(files: list[PboFile], pbo_bytes: bytes) -> bytes:
 
 
 # V3 extension whitelist.
-# Arma 3 / hemtt omit .c. DayZ engine and DS utils include it (EnforceScript).
+# Arma 3 / hemtt omit .c: DayZ engine and DS utils include it (EnforceScript).
 # Missing .c causes hash3 mismatch → engine kicks clients at verifySignatures=2.
 _V3_EXTS = {'.bikb', '.c', '.cfg', '.ext', '.fsm', '.h', '.hpp',
             '.inc', '.sqf', '.sqfc', '.sqm', '.sqs'}
