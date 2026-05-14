@@ -1,6 +1,6 @@
 # sign-pbo
 
-**v1.1.0**
+**v1.1.1**
 
 A small Python utility that signs DayZ PBOs with a stable authority name,
 producing a `.bisign` file that satisfies `verifySignatures=2` on a DayZ

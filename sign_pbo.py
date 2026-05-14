@@ -1,5 +1,5 @@
 # Author:       Bushy <contact@bushy.dev>
-# Version:      v1.1.0
+# Version:      v1.1.1
 # Modified:     2026-05-14
 #
 # sign_pbo.py: sign a hemtt-built PBO with a stable authority name,
