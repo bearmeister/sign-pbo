@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+build/
+dist/
+.eggs/
+.pytest_cache/
+.tox/
+.coverage
+htmlcov/
+
+# Venvs
+.venv/
+venv/
+env/
+
+# Tooling
+.mypy_cache/
+.ruff_cache/
+.idea/
+.vscode/
+
+# Project
+tmp/
+.signing/
+*.bikey
+*.privatekey
+*.biprivatekey
+*.bisign
+
+# but keep the throwaway test fixture
+!tests/fixtures/*.privatekey
+
+# OS
+.DS_Store
+Thumbs.db
